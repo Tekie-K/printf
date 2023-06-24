@@ -19,28 +19,28 @@
 #define S_SHORT 1
 
 /**
- * struct fmt - Struct op
+ * struct _formatt - Struct op
  *
- * @fmt: The format.
+ * @_formatt: The format.
  * @fn: The function associated.
  */
-struct fmt
+struct _formatt
 {
-	char fmt;
+	char _formatt;
 	int (*fn)(va_list, char[], int, int, int, int);
 };
 
 
 /**
- * typedef struct fmt fmt_t - Struct op
+ * typedef struct _formatt _formatt_t - Struct op
  *
- * @fmt: The format.
+ * @_formatt: The format.
  * @fm_t: The function associated.
  */
-typedef struct fmt fmt_t;
+typedef struct _formatt _formatt_t;
 
 int _printf(const char *format, ...);
-int hdle_pt(const char *fmt, int *i,
+int hdle_pt(const char *_formatt, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
@@ -79,10 +79,10 @@ int pointer(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Funciotns to handle other specifiers */
-int get_flags(const char *format, int *i);
+int gt_flgs(const char *format, int *i);
 int get_w(const char *format, int *i, va_list list);
-int get_precision(const char *format, int *i, va_list list);
-int get_size(const char *format, int *i);
+int gt_prc(const char *format, int *i, va_list list);
+int gt_sz(const char *format, int *i);
 
 /*Function to print string in reverse*/
 int prt_rev(va_list types, char buffer[],

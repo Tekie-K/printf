@@ -1,6 +1,6 @@
 #include "main.h"
 
-void print_buffer(char buffer[], int *buff_ind);
+void prt_buf(char buffer[], int *buff_ind);
 
 /**
  * _printf - Printf function
@@ -25,17 +25,17 @@ int _printf(const char *format, ...)
 		{
 			buffer[buff_ind++] = format[i];
 			if (buff_ind == BUFF_SIZE)
-				print_buffer(buffer, &buff_ind);
+				prt_buf(buffer, &buff_ind);
 			/* write(1, &format[i], 1);*/
 			printed_chars++;
 		}
 		else
 		{
-			print_buffer(buffer, &buff_ind);
-			flags = get_flags(format, &i);
+			prt_buf(buffer, &buff_ind);
+			flags = gt_flgs(format, &i);
 			width = get_w(format, &i, list);
-			precision = get_precision(format, &i, list);
-			size = get_size(format, &i);
+			precision = gt_prc(format, &i, list);
+			size = gt_sz(format, &i);
 			++i;
 			printed = hdle_pt(format, &i, list, buffer,
 				flags, width, precision, size);
@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 		}
 	}
 
-	print_buffer(buffer, &buff_ind);
+	prt_buf(buffer, &buff_ind);
 
 	va_end(list);
 
@@ -53,11 +53,11 @@ int _printf(const char *format, ...)
 }
 
 /**
- * print_buffer - Prints the contents of the buffer if it exist
+ * prt_buf - Prints the contents of the buffer if it exist
  * @buffer: Array of chars
  * @buff_ind: Index at which to add next char, represents the length.
  */
-void print_buffer(char buffer[], int *buff_ind)
+void prt_buf(char buffer[], int *buff_ind)
 {
 	if (*buff_ind > 0)
 		write(1, &buffer[0], *buff_ind);
