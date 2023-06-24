@@ -40,7 +40,7 @@ struct fmt
 typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
-int handle_print(const char *fmt, int *i,
+int hdle_pt(const char *fmt, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
@@ -80,7 +80,7 @@ int pointer(va_list types, char buffer[],
 
 /* Funciotns to handle other specifiers */
 int get_flags(const char *format, int *i);
-int get_width(const char *format, int *i, va_list list);
+int get_w(const char *format, int *i, va_list list);
 int get_precision(const char *format, int *i, va_list list);
 int get_size(const char *format, int *i);
 
@@ -93,25 +93,25 @@ int prt_r13(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* width handler */
-int handle_write_char(char c, char buffer[],
+int hdle_wrt(char c, char buffer[],
 	int flags, int width, int precision, int size);
-int write_number(int is_positive, int ind, char buffer[],
+int wrt_numb(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
-int write_num(int ind, char bff[], int flags, int width, int precision,
+int wrt_num(int ind, char bff[], int flags, int width, int precision,
 	int length, char padd, char extra_c);
-int write_pointer(char buffer[], int ind, int length,
+int wrt_ptr(char buffer[], int ind, int length,
 	int width, int flags, char padd, char extra_c, int padd_start);
 
-int write_unsgnd(int is_negative, int ind,
+int wrt_unsg(int is_negative, int ind,
 char buffer[],
 	int flags, int width, int precision, int size);
 
 /******************* UTILS *******************/
-int is_printable(char);
-int append_hexa_code(char, char[], int);
-int is_digit(char);
+int is_prt(char);
+int app_hex(char, char[], int);
+int is_dig(char);
 
-long int convert_size_number(long int num, int size);
-long int convert_size_unsgnd(unsigned long int num, int size);
+long int conv_siz_numb(long int num, int size);
+long int conv_siz_unsg(unsigned long int num, int size);
 
 #endif /* MAIN_H */
